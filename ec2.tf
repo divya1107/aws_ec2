@@ -1,7 +1,7 @@
 resource "aws_instance" "terraform_secnd_ec2" {
   ami             = "ami-00ca32bbc84273381"
   instance_type   = "t2.micro"
-  count           = 0
+  count           = 1
   security_groups = [aws_security_group.trfm_sg.name]
   user_data = <<-EOF
               #!/bin/bash
@@ -65,4 +65,5 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv6" {
   security_group_id = aws_security_group.trfm_sg.id
   cidr_ipv6         = "::/0"
   ip_protocol       = "-1"
+
 }
